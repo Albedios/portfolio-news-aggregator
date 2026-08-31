@@ -1,0 +1,319 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Briefly - Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fcf8fb",
+                        "surface-container-low": "#f6f3f5",
+                        "outline-variant": "#c0c6d6",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#9a4100",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-secondary-container": "#fffbff",
+                        "surface-tint": "#005db8",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#aac7ff",
+                        "background": "#fcf8fb",
+                        "on-secondary-fixed-variant": "#3631b4",
+                        "on-surface-variant": "#414754",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#1b1b1d",
+                        "on-tertiary-container": "#fffbff",
+                        "tertiary-container": "#c25300",
+                        "outline": "#717786",
+                        "inverse-surface": "#303032",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#d6e3ff",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-primary-container": "#fefcff",
+                        "on-primary-fixed-variant": "#00468d",
+                        "primary": "#005ab3",
+                        "on-surface": "#1b1b1d",
+                        "secondary-container": "#6664e4",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "secondary-fixed-dim": "#c2c1ff",
+                        "surface": "#fcf8fb",
+                        "surface-variant": "#e4e2e4",
+                        "primary-container": "#0073e0",
+                        "surface-container": "#f0edef",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dcd9dc",
+                        "secondary": "#4c4aca",
+                        "inverse-primary": "#aac7ff",
+                        "on-primary-fixed": "#001b3e",
+                        "secondary-fixed": "#e2dfff",
+                        "on-tertiary-fixed": "#341100",
+                        "surface-container-high": "#eae7ea",
+                        "tertiary-fixed": "#ffdbcb",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#793100",
+                        "on-secondary-fixed": "#0c006a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "md": "16px",
+                        "sm": "12px",
+                        "base": "4px",
+                        "gutter": "20px",
+                        "xs": "8px",
+                        "xl": "40px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Newsreader"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Newsreader"],
+                        "label-xs": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Newsreader"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-xs": ["10px", { "lineHeight": "12px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .ai-summary-card { background-color: #F0F7FF; border: 1px dashed theme('colors.primary'); }
+        .glass-panel { background: rgba(252, 248, 251, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full h-16 px-gutter sticky top-0 z-40 bg-background/80 backdrop-blur-md">
+<div class="flex items-center gap-md">
+<span class="md:hidden material-symbols-outlined text-primary text-2xl cursor-pointer">menu</span>
+<div class="font-display-lg text-display-lg font-semibold text-primary dark:text-primary-fixed hidden md:block">Briefly</div>
+</div>
+<nav class="hidden md:flex items-center gap-lg font-label-sm text-label-sm">
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Latest</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-opacity" href="#">Trending</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-opacity" href="#">Verified</a>
+</nav>
+<div class="flex items-center gap-md">
+<div class="relative hidden md:block w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="w-full h-9 pl-9 pr-4 rounded-DEFAULT border border-outline-variant bg-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm transition-shadow" placeholder="Search insights..." type="text">
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-opacity" data-icon="notifications">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-opacity" data-icon="account_circle">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<div class="flex max-w-[container-max] mx-auto min-h-screen">
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full py-lg px-md w-64 border-r border-outline-variant bg-surface dark:bg-surface-dim z-50">
+<div class="flex items-center gap-3 mb-xl pt-16">
+<img alt="Briefly Logo" class="w-10 h-10 rounded-lg object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-qIrOG9o_C4yysUzCc6vsImQOYXY9-pZlKjSbov5H-C2tfR9V0h4jvG4dyqG3Nk5u_ijw7Q8yopK_XbQLg50ZThC9lDfav4-XhahEp88-OIp6FITlHrQud_ziLmBERN0mwFvvD99U9NGZuNCjeh7k1CCn5XN7OA997E3MS8KjwcGJunogDWtSn4eUvoAwCzEifSwOqxfxpliS2CFCxPGptEJp29OtUn5vebsJo5NB4qDIq-tCJaUopg">
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface dark:text-on-surface">Briefly</h1>
+<p class="font-label-xs text-label-xs text-on-surface-variant">Distilled Intelligence</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary dark:text-primary-fixed font-bold border-r-4 border-primary bg-primary-container/10 group scale-98 active:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="newspaper">newspaper</span>
+<span class="font-body-md text-body-md">Feed</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline hover:text-on-surface hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors group scale-98 active:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="rss_feed">rss_feed</span>
+<span class="font-body-md text-body-md">Sources</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline hover:text-on-surface hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors group scale-98 active:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-body-md text-body-md">AI Studio</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline hover:text-on-surface hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors group scale-98 active:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="font-body-md text-body-md">Bookmarks</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-4">
+<button class="w-full py-2 px-4 bg-primary text-on-primary rounded-DEFAULT font-label-sm hover:bg-primary-fixed-variant transition-colors shadow-sm">Upgrade to Pro</button>
+<nav class="flex flex-col gap-1 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span> Settings
+                    </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span> Help
+                    </a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 w-full p-4 md:p-xl flex gap-xl justify-center items-start">
+<!-- Center Feed Column -->
+<div class="w-full max-w-[720px] flex flex-col gap-xl">
+<!-- LLM Toggle & Filters -->
+<div class="flex justify-between items-center bg-surface-container-low p-2 rounded-xl border border-outline-variant">
+<div class="flex gap-1 bg-surface rounded-lg p-1 border border-outline-variant/50 shadow-sm">
+<button class="px-4 py-1.5 rounded-md bg-primary text-on-primary font-label-sm text-xs shadow">Balanced</button>
+<button class="px-4 py-1.5 rounded-md text-on-surface-variant hover:bg-surface-container font-label-sm text-xs transition-colors">Fast</button>
+<button class="px-4 py-1.5 rounded-md text-on-surface-variant hover:bg-surface-container font-label-sm text-xs transition-colors">Deep</button>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant px-3 py-1.5 rounded-lg hover:bg-surface-container cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span class="font-label-sm text-xs">Filters</span>
+</div>
+</div>
+<!-- Feed Items -->
+<div class="flex flex-col gap-xl pb-24">
+<!-- Article Card 1 -->
+<article class="flex flex-col gap-sm bg-surface-container-lowest border border-outline-variant rounded-xl p-md hover:shadow-lg transition-shadow duration-300 relative group overflow-hidden">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<img class="w-5 h-5 rounded-full object-cover border border-outline-variant/50 grayscale" data-alt="A small circular logo icon representing a prominent global tech news publication. The design is minimalist, utilizing a strict black and white color palette. It features a stylized, sharp letter 'W' in a modern sans-serif font, enclosed within a perfect circle. The aesthetic is extremely clean, professional, and optimized for high-resolution displays in a light-mode UI context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIfL2nvBb89HHiwSf1zUoDCkaMUV4jgqB8rG5hEuFLZxGNx4LSLtFbMWr0IPqr_i5BDsq7qjtZXYjHUy9Xsnz-XI2mX6sqcyM_2An-qrkGFFxVZkPvE-djmhl9OZFu3itTUyG-vb4GmFGzqO6dO1403zuzy5bAQNb5sTNQpscttjo7Tft9FDIJGGCUJM8cvUXCZ4GV93ykztfxTAM18W7xJSOOztmjyP6OJ9uwKK5KBSyR2Q8fSCMH7w">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Tech Weekly • 2h ago</span>
+</div>
+<span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded-full font-label-xs text-[9px] uppercase tracking-wider border border-emerald-200">Optimistic</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface leading-tight group-hover:text-primary transition-colors cursor-pointer">Breakthrough in Quantum Error Correction Paves Way for Scalable Systems</h2>
+<div class="ai-summary-card p-3 rounded-lg mt-2 relative">
+<div class="absolute -top-3 right-3 bg-surface border border-primary text-primary px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-xs text-[9px]">AI Brief</span>
+</div>
+<p class="font-body-md text-[15px] text-on-surface-variant leading-relaxed">Researchers have successfully demonstrated a logical qubit that outperforms its physical counterparts, marking a critical milestone. This development significantly reduces the noise that has historically plagued quantum computers, moving the timeline for commercial viability forward by several years.</p>
+</div>
+<div class="flex justify-between items-center mt-3 pt-3 border-t border-outline-variant/50">
+<div class="flex gap-4">
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">thumb_up</span> <span class="text-xs">245</span>
+</button>
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat_bubble_outline</span> <span class="text-xs">42</span>
+</button>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1">
+<span class="material-symbols-outlined">bookmark_add</span>
+</button>
+</div>
+</article>
+<!-- Article Card 2 -->
+<article class="flex flex-col gap-sm bg-surface-container-lowest border border-outline-variant rounded-xl p-md hover:shadow-lg transition-shadow duration-300 relative group overflow-hidden">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<img class="w-5 h-5 rounded-full object-cover border border-outline-variant/50 grayscale" data-alt="A small circular logo icon for a financial news outlet. The design is sleek and authoritative, featuring a simple geometric chart motif in stark black and white. The aesthetic emphasizes trust, precision, and global market focus, perfect for a high-end, minimalist light-mode dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-QjpfOXls92xDEstoV7FHk3uOKIFEwg2OKSsywdLisFOrYmbKFNO1RRzeE98GmLk_RF2I8a49Pcjhke0bozoAzyw1PhTvauGlnGw6sfaL77sLxaxj6VNRkilPy_HAPfVR8gLTLZZMMGFM9V3W8ectRvLVRID6ByZgvsghDOEMhLSDsrrhtX1WfA5k7Mb1UuK7k6A5ujQjWWw_cYgdiY1coiznKC-eWgvhpFm50bTpi28eJVzkoaQP8Q">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Global Finance • 4h ago</span>
+</div>
+<span class="px-2 py-1 bg-red-100 text-red-800 rounded-full font-label-xs text-[9px] uppercase tracking-wider border border-red-200">Critical</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface leading-tight group-hover:text-primary transition-colors cursor-pointer">Central Banks Signal Prolonged Restrictive Monetary Policy Amid Sticky Inflation</h2>
+<div class="ai-summary-card p-3 rounded-lg mt-2 relative">
+<div class="absolute -top-3 right-3 bg-surface border border-primary text-primary px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-xs text-[9px]">AI Brief</span>
+</div>
+<p class="font-body-md text-[15px] text-on-surface-variant leading-relaxed">Major central bank governors indicated today that interest rates will remain elevated longer than markets anticipated, citing persistent core inflation in service sectors. Consequently, equity markets experienced a sharp sell-off, while short-term bond yields spiked to multi-year highs.</p>
+</div>
+<div class="flex justify-between items-center mt-3 pt-3 border-t border-outline-variant/50">
+<div class="flex gap-4">
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">thumb_up</span> <span class="text-xs">89</span>
+</button>
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat_bubble_outline</span> <span class="text-xs">112</span>
+</button>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1">
+<span class="material-symbols-outlined">bookmark_add</span>
+</button>
+</div>
+</article>
+</div>
+</div>
+<!-- Right Sidebar -->
+<aside class="hidden lg:flex flex-col gap-xl w-80 sticky top-24">
+<!-- Quick Insights -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant p-md">
+<div class="flex items-center gap-2 mb-4 text-primary">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+<h3 class="font-label-sm text-sm font-bold uppercase tracking-wider">Quick AI Insights</h3>
+</div>
+<ul class="flex flex-col gap-3">
+<li class="flex items-start gap-2 border-b border-outline-variant/50 pb-3 last:border-0 last:pb-0">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></span>
+<p class="text-sm text-on-surface-variant leading-snug">Tech sector sentiment shifts positive following Q3 earnings beats.</p>
+</li>
+<li class="flex items-start gap-2 border-b border-outline-variant/50 pb-3 last:border-0 last:pb-0">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container mt-2 shrink-0"></span>
+<p class="text-sm text-on-surface-variant leading-snug">Energy markets volatile amid geopolitical uncertainties in the Middle East.</p>
+</li>
+<li class="flex items-start gap-2 border-b border-outline-variant/50 pb-3 last:border-0 last:pb-0">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-2 shrink-0"></span>
+<p class="text-sm text-on-surface-variant leading-snug">AI regulation frameworks advancing in EU; US likely to follow.</p>
+</li>
+</ul>
+</div>
+<!-- Trending Summaries -->
+<div class="bg-surface rounded-xl border border-outline-variant p-md shadow-sm">
+<div class="flex items-center gap-2 mb-4 text-on-surface">
+<span class="material-symbols-outlined text-[20px]">trending_up</span>
+<h3 class="font-label-sm text-sm font-bold uppercase tracking-wider">Trending Summaries</h3>
+</div>
+<div class="flex flex-col gap-4">
+<a class="group block" href="#">
+<span class="text-xs font-label-sm text-primary mb-1 block">1. Technology</span>
+<h4 class="text-sm font-bold text-on-surface group-hover:text-primary transition-colors leading-tight">Apple Vision Pro: Initial adoption rates and developer ecosystem growth.</h4>
+</a>
+<a class="group block" href="#">
+<span class="text-xs font-label-sm text-primary mb-1 block">2. Economics</span>
+<h4 class="text-sm font-bold text-on-surface group-hover:text-primary transition-colors leading-tight">The impact of nearshoring on North American supply chains.</h4>
+</a>
+<a class="group block" href="#">
+<span class="text-xs font-label-sm text-primary mb-1 block">3. Science</span>
+<h4 class="text-sm font-bold text-on-surface group-hover:text-primary transition-colors leading-tight">CRISPR breakthroughs in treating inherited retinal diseases.</h4>
+</a>
+</div>
+</div>
+</aside>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline shadow-lg pb-safe">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-xs text-label-xs mt-1">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-lg px-3 py-1 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-label-xs text-label-xs mt-1">Sources</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-lg px-3 py-1 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-xs text-label-xs mt-1">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-lg px-3 py-1 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-xs text-label-xs mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

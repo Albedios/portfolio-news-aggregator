@@ -1,0 +1,373 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Briefly - Intelligence Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=Newsreader:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#fcf8fb",
+                    "surface-container-low": "#f6f3f5",
+                    "outline-variant": "#c0c6d6",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#9a4100",
+                    "surface-container-highest": "#e4e2e4",
+                    "on-secondary-container": "#fffbff",
+                    "surface-tint": "#005db8",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#aac7ff",
+                    "background": "#fcf8fb",
+                    "on-secondary-fixed-variant": "#3631b4",
+                    "on-surface-variant": "#414754",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#1b1b1d",
+                    "on-tertiary-container": "#fffbff",
+                    "tertiary-container": "#c25300",
+                    "outline": "#717786",
+                    "inverse-surface": "#303032",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#d6e3ff",
+                    "inverse-on-surface": "#f3f0f2",
+                    "on-primary-container": "#fefcff",
+                    "on-primary-fixed-variant": "#00468d",
+                    "primary": "#005ab3",
+                    "on-surface": "#1b1b1d",
+                    "secondary-container": "#6664e4",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#ffb691",
+                    "secondary-fixed-dim": "#c2c1ff",
+                    "surface": "#fcf8fb",
+                    "surface-variant": "#e4e2e4",
+                    "primary-container": "#0073e0",
+                    "surface-container": "#f0edef",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#dcd9dc",
+                    "secondary": "#4c4aca",
+                    "inverse-primary": "#aac7ff",
+                    "on-primary-fixed": "#001b3e",
+                    "secondary-fixed": "#e2dfff",
+                    "on-tertiary-fixed": "#341100",
+                    "surface-container-high": "#eae7ea",
+                    "tertiary-fixed": "#ffdbcb",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#793100",
+                    "on-secondary-fixed": "#0c006a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "md": "16px",
+                    "sm": "12px",
+                    "base": "4px",
+                    "gutter": "20px",
+                    "xs": "8px",
+                    "xl": "40px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": [
+                            "Newsreader"
+                    ],
+                    "label-sm": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "Newsreader"
+                    ],
+                    "label-xs": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Newsreader"
+                    ]
+            },
+            "fontSize": {
+                    "display-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "38px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg": [
+                            "40px",
+                            {
+                                    "lineHeight": "48px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-xs": [
+                            "10px",
+                            {
+                                    "lineHeight": "12px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "500"
+                            }
+                    ]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Contextual Task Header -->
+<header class="sticky top-0 z-40 bg-background/90 backdrop-blur-md border-b border-outline-variant h-16 flex items-center justify-between px-gutter transition-all duration-300">
+<!-- Back Action -->
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors group px-sm py-xs rounded-lg hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[20px] group-hover:-translate-x-1 transition-transform" data-icon="arrow_back">arrow_back</span>
+<span class="font-label-sm text-label-sm tracking-wider uppercase">Back to Feed</span>
+</button>
+<!-- Brand Center (Subtle) -->
+<div class="hidden md:flex items-center gap-xs text-outline opacity-50">
+<span class="material-symbols-outlined text-[18px]" data-icon="psychology">psychology</span>
+<span class="font-label-sm text-label-sm tracking-widest uppercase">Briefly Engine Active</span>
+</div>
+<!-- LLM Selection Toggle -->
+<div class="flex bg-surface-container rounded-lg p-[2px] border border-outline-variant/30 shadow-inner">
+<button class="px-sm py-[4px] rounded-md font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors">Fast</button>
+<button class="px-sm py-[4px] rounded-md font-label-sm text-label-sm bg-primary text-on-primary shadow-sm transition-colors cursor-default">Deep</button>
+<button class="px-sm py-[4px] rounded-md font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors">Balanced</button>
+</div>
+</header>
+<!-- Main Reader Layout -->
+<main class="max-w-[container-max] mx-auto w-full px-md md:px-lg py-lg md:py-xl grid grid-cols-1 md:grid-cols-12 gap-xl md:gap-[48px]">
+<!-- Center Canvas: Article & AI Report -->
+<article class="md:col-span-8 space-y-xl md:space-y-[56px] relative">
+<!-- AI Intelligence Report Module -->
+<section class="bg-surface-container-lowest border border-dashed border-primary/50 rounded-xl p-lg md:p-[32px] shadow-[0_4px_24px_rgba(0,0,0,0.02)] relative overflow-hidden group hover:border-primary transition-colors">
+<!-- Ambient AI Glow Background -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-fixed/20 blur-[80px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/4"></div>
+<div class="relative z-10 space-y-lg">
+<!-- Header -->
+<div class="flex items-center justify-between border-b border-outline-variant/40 pb-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface m-0">AI Intelligence Report</h2>
+</div>
+<div class="flex items-center gap-xs bg-surface-container px-sm py-xs rounded-full border border-outline-variant/50">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="verified">verified</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Source Verified</span>
+</div>
+</div>
+<!-- Summary Content -->
+<div class="space-y-sm">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                            Global markets experienced significant volatility this week, primarily driven by unexpected shifts in central bank monetary policies across Europe and Asia. The immediate reaction saw safe-haven assets rally, while emerging market equities faced downward pressure as investors reassessed risk exposure.
+                        </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                            Analysts note that this pivot contradicts earlier forward guidance, creating a credibility gap that may complicate future macroeconomic forecasting. The tech sector, highly sensitive to interest rate expectations, bore the brunt of the institutional sell-off, erasing a month of steady gains in a matter of hours.
+                        </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                            Moving forward, commodity prices are expected to remain elevated as a secondary effect of currency fluctuations. Strategic defensive positioning is currently favored by major institutional portfolios until clearer signals emerge from the upcoming G7 summit.
+                        </p>
+</div>
+<!-- Key Takeaways & Tone Split -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-lg pt-sm">
+<!-- Takeaways -->
+<div class="space-y-sm bg-surface-container-low p-md rounded-lg border border-outline-variant/30">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="format_list_bulleted">format_list_bulleted</span>
+                                Key Takeaways
+                            </h3>
+<ul class="space-y-xs">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-[16px] text-primary mt-[4px]" data-icon="arrow_right">arrow_right</span>
+<span class="font-body-md text-body-md text-on-surface text-sm">Central bank policy shifts trigger global market volatility.</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-[16px] text-primary mt-[4px]" data-icon="arrow_right">arrow_right</span>
+<span class="font-body-md text-body-md text-on-surface text-sm">Tech sector faces severe institutional sell-offs.</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-[16px] text-primary mt-[4px]" data-icon="arrow_right">arrow_right</span>
+<span class="font-body-md text-body-md text-on-surface text-sm">Defensive portfolio positioning recommended short-term.</span>
+</li>
+</ul>
+</div>
+<!-- Tone Analysis -->
+<div class="space-y-sm bg-surface-container-low p-md rounded-lg border border-outline-variant/30 flex flex-col justify-center">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="bar_chart">bar_chart</span>
+                                Tone Analysis
+                            </h3>
+<div class="space-y-xs pt-xs">
+<div class="flex justify-between font-label-xs text-label-xs text-outline">
+<span>Biased / Alarmed</span>
+<span class="text-on-surface font-bold">Neutral / Objective</span>
+<span>Optimistic</span>
+</div>
+<!-- Custom Chart -->
+<div class="h-2 w-full bg-outline-variant/30 rounded-full relative flex items-center overflow-hidden">
+<!-- Center line -->
+<div class="absolute left-1/2 top-0 bottom-0 w-[2px] bg-outline-variant z-10"></div>
+<!-- Value indicator -->
+<div class="absolute left-1/2 h-full bg-secondary w-1/4 rounded-r-full opacity-80" style="transform-origin: left; transform: scaleX(0.4);"></div>
+<div class="absolute left-[55%] w-3 h-3 bg-secondary rounded-full border-2 border-surface-container-low shadow-sm z-20 -translate-x-1/2"></div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[13px] text-center pt-xs">
+                                    The source material maintains a highly factual, objective tone despite reporting on volatile market conditions.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Original Article Content -->
+<div class="space-y-lg px-xs">
+<!-- Article Header -->
+<header class="space-y-md border-b border-outline-variant pb-md">
+<!-- Badges -->
+<div class="flex items-center gap-sm flex-wrap">
+<span class="inline-flex items-center gap-1 bg-surface-container-highest text-on-surface px-2 py-1 rounded-sm font-label-xs text-label-xs tracking-wider uppercase">Finance</span>
+<span class="font-label-xs text-label-xs text-outline">12 MIN READ</span>
+</div>
+<h1 class="font-display-lg text-display-lg md:font-display-lg md:text-display-lg text-on-surface m-0 tracking-tight leading-[1.1]">
+                        Unprecedented Monetary Shifts: Analyzing the Ripple Effect on Global Equities
+                    </h1>
+<div class="flex items-center gap-md pt-sm">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A professional, high-contrast, black and white portrait photo of a financial journalist. Corporate headshot style, clean background, sharp focus, modern editorial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgbw1rGV58GkDcW6y-m8HB9bhhS8QvxjUq4XCKBX0qFX9VIk7dZZ9g7NojOjFo4GoqgsRrx52kpY_CjVH74OeE1WT_mP7hZAT7mYxQMpxta-f7SyRWqs469jxElEHbgCQqutv_AF867ebS56ntbO1LjxWJNJnLged7c4Y_X09Psqx_LzamQWjPNMipNRBU3yRbCoUctvr1GDmOTLe9CFlrwuwp-nHk3t37q4LSPetkQ0wzeJ6Z0A__KA">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface m-0">Eleanor Vance</p>
+<p class="font-label-xs text-label-xs text-on-surface-variant m-0">Senior Markets Correspondent • Oct 24, 2023</p>
+</div>
+</div>
+</header>
+<!-- Article Body -->
+<div class="font-body-lg text-body-lg text-on-surface leading-[1.8] space-y-md md:space-y-lg text-pretty">
+<p class="first-letter:text-5xl first-letter:font-display-lg first-letter:font-bold first-letter:mr-3 first-letter:float-left first-letter:text-primary">
+                        The bedrock of modern financial forecasting relies on clear, consistent communication from central banks. This week, that bedrock cracked. In a coordinated series of moves that caught institutional investors entirely off guard, key monetary authorities across major economic zones pivoted sharply from their telegraphed trajectories, opting for aggressive normalization measures previously considered tail-risk scenarios.
+                    </p>
+<p>
+                        The immediate fallout was visible across trading floors globally. Yields on sovereign debt spiked dramatically, reflecting a sudden repricing of risk premiums. This abrupt recalibration forced algorithmic trading systems and human managers alike to hastily unwind leveraged positions, exacerbating the intraday volatility.
+                    </p>
+<!-- Decorative Pull Quote -->
+<blockquote class="my-xl pl-md border-l-4 border-primary bg-surface-container-lowest p-md rounded-r-lg shadow-sm">
+<p class="font-headline-md text-headline-md text-on-surface italic m-0">
+                            "We are witnessing a structural regime change in real-time. The era of forward-guidance as an immutable promise has ended, replaced by hyper-reactive policy management."
+                        </p>
+<footer class="mt-sm font-label-sm text-label-sm text-on-surface-variant">— Marcus Thorne, Chief Economist at Apex Capital</footer>
+</blockquote>
+<p>
+                        Technology stocks, historically the primary beneficiaries of low-interest-rate environments due to their reliance on future cash flow valuations, experienced the most severe contractions. Major indices tracking the sector fell through crucial technical support levels within the first two hours of trading. Analysts suggest this is not merely a transient correction but a fundamental re-evaluation of growth multiples in a higher-for-longer rate paradigm.
+                    </p>
+<p>
+                        Conversely, commodities and traditional defensive sectors demonstrated relative resilience, acting as the only viable lifeboats in a sea of red. Energy and basic materials indices outperformed, signaling a shift toward tangible assets in the face of currency and bond market instability. As the dust settles, the consensus among strategists is a pivot toward capital preservation over aggressive capital appreciation until the macroeconomic fog lifts.
+                    </p>
+</div>
+</div>
+</article>
+<!-- Sidebar: Related Perspectives -->
+<aside class="md:col-span-4 border-t md:border-t-0 md:border-l border-outline-variant pt-xl md:pt-0 md:pl-lg space-y-lg">
+<div class="sticky top-[100px] space-y-md">
+<h3 class="font-headline-md text-headline-md text-on-surface border-b border-outline-variant pb-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="compare_arrows">compare_arrows</span>
+                    Related Perspectives
+                </h3>
+<!-- Perspective Card 1 -->
+<a class="block group bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-md hover:border-outline hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all" href="#">
+<div class="flex items-center justify-between mb-sm">
+<div class="flex items-center gap-xs">
+<img class="w-4 h-4 rounded-sm grayscale group-hover:grayscale-0 transition-all" data-alt="A minimalist, monochrome, geometric logomark icon representing a global financial news network, flat vector style, perfectly centered on a white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBylr55uWUjiI57KxTIrNkaGlJCWaBqt-hOqO6Hq62DKSJRekZB-MWv4LLeWaUzh1LnPbfOCDztLWykY9p16CLSJdmPMo038F1LDUTD7jOiNRIXG-9qe_tyTM3smc5p04OGLJ1uDcFWJ3l710qHzdwBgTNd4TarBjG19ILWArVMxXPWXwQuLPNGah8CfwJRcg1x9dE1rXVJVLMhJXj8boiljvCtC60cjlebtIwfsmA6FqR1YenBmyEPsA">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Global Finance</span>
+</div>
+<span class="bg-surface-container text-on-surface-variant px-2 py-[2px] rounded-sm font-label-xs text-label-xs">Contrarian</span>
+</div>
+<h4 class="font-body-md text-body-md text-on-surface font-semibold group-hover:text-primary transition-colors mb-xs">
+                        Market Overreaction: Why the Bank Pivot is a Buying Opportunity
+                    </h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant line-clamp-2 leading-relaxed">
+                        Arguing that algorithmic selling exaggerated the move, this analysis suggests underlying corporate fundamentals remain robust enough to absorb the rate shock.
+                    </p>
+</a>
+<!-- Perspective Card 2 -->
+<a class="block group bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-md hover:border-outline hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all" href="#">
+<div class="flex items-center justify-between mb-sm">
+<div class="flex items-center gap-xs">
+<img class="w-4 h-4 rounded-sm grayscale group-hover:grayscale-0 transition-all" data-alt="A clean, abstract blue and white icon representing an economic research institute, sharp lines, corporate identity, flat design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJOcvQLpyAbVTsbZut8_gALd_HVYv-Om_wHGGlLOQ-oLAgJUYVeixaqD6TFigP7EJT35weTl6b-MPJeP66Qmb16KMHI9JB0q9UXChm9a5f2-wQLbIr7oaYsLTTDkk0KGuuloddh-owY25XRNq5Kpkl91KvPJa-ckQHWyL8ENrJSXRoPg-_2V5b8dh0HU8PTHOhr5QN8e0QTNujE9E5Y1Lhyg32oaMhPqQ_5ckqN0hU7Spc9qv2HKHvrQ">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Econ Institute</span>
+</div>
+<span class="bg-error-container text-on-error-container px-2 py-[2px] rounded-sm font-label-xs text-label-xs">Pessimistic</span>
+</div>
+<h4 class="font-body-md text-body-md text-on-surface font-semibold group-hover:text-primary transition-colors mb-xs">
+                        The End of the Bull Cycle: Preparing for Stagflation
+                    </h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant line-clamp-2 leading-relaxed">
+                        A deep dive into historical precedents suggesting the current policy error will inevitably lead to a sustained period of low growth and high inflation.
+                    </p>
+</a>
+<!-- Perspective Card 3 -->
+<a class="block group bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-md hover:border-outline hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all" href="#">
+<div class="flex items-center justify-between mb-sm">
+<div class="flex items-center gap-xs">
+<img class="w-4 h-4 rounded-sm grayscale group-hover:grayscale-0 transition-all" data-alt="A simple stylized 'T' logo in deep purple and white, representing a technology focused news outlet, modern minimal typography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClk4qF7hI_OUGft_owSi1bDRjg3cs2J1XeIS__4PfFnOBObgLuIzJHjQyFGzCMlzGY_IG-i0OfXLUc1lXAjVv5ZRp8bWVZ4RvbAKTKkRh6V04U8r2lUbj2_POXr7e1Rzfyzf69wHJLoo82CHLgyto_KkmRTJkBPF14fQvmT8B5Jw4t5OWwkYJngSIIEkdVsC62nDnILeLJpnPjH-VpR583zW6sTHVjTrGvzfb6FCREeYbq5VvTN4-g6w">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Tech Insider</span>
+</div>
+<span class="bg-surface-container text-on-surface-variant px-2 py-[2px] rounded-sm font-label-xs text-label-xs">Nuanced</span>
+</div>
+<h4 class="font-body-md text-body-md text-on-surface font-semibold group-hover:text-primary transition-colors mb-xs">
+                        Not All Tech is Equal: Filtering the Fallout
+                    </h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant line-clamp-2 leading-relaxed">
+                        Breaks down the tech sector sell-off, differentiating between highly leveraged speculative startups and cash-rich mega-caps positioned to weather the storm.
+                    </p>
+</a>
+</div>
+</aside>
+</main>
+</body></html>

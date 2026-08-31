@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fcf8fb;
+  --foreground: #1b1b1d;
+  --surface: #fcf8fb;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f6f3f5;
+  --surface-container: #f0edef;
+  --surface-container-high: #eae7ea;
+  --outline: #717786;
+  --outline-variant: #c0c6d6;
+  --primary: #005ab3;
+  --primary-container: #0073e0;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom editorial scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f6f3f5;
+}
+::-webkit-scrollbar-thumb {
+  background: #c0c6d6;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #717786;
+}
+
+.glass-panel {
+  background: rgba(252, 248, 251, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #e4e2e4;
+}
+
+.glass-card {
+  background: #ffffff;
+  border: 1px solid #c0c6d6;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: #005ab3;
+  box-shadow: 0px 4px 16px rgba(0, 90, 179, 0.08);
+}
+
+/* Stitch AI Summary Card - Light blue tint with dashed primary border */
+.ai-summary-card {
+  background-color: #F0F7FF;
+  border: 1px dashed rgba(0, 90, 179, 0.45);
+  border-radius: 0.5rem;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+.ai-summary-card:hover {
+  background-color: #eaf3ff;
+  border-color: #005ab3;
+}
+
+/* Subtle Shimmer for loading */
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.03) 0%,
+    rgba(0, 0, 0, 0.08) 50%,
+    rgba(0, 0, 0, 0.03) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Perspective Grid Card */
+.perspective-gradient {
+  background: radial-gradient(circle at top right, rgba(76, 74, 202, 0.08), transparent 70%),
+              radial-gradient(circle at bottom left, rgba(0, 90, 179, 0.06), transparent 70%);
+}

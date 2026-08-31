@@ -1,0 +1,383 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Briefly - RSS Sources</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&amp;family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#fcf8fb",
+                      "surface-container-low": "#f6f3f5",
+                      "outline-variant": "#c0c6d6",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#9a4100",
+                      "surface-container-highest": "#e4e2e4",
+                      "on-secondary-container": "#fffbff",
+                      "surface-tint": "#005db8",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#aac7ff",
+                      "background": "#fcf8fb",
+                      "on-secondary-fixed-variant": "#3631b4",
+                      "on-surface-variant": "#414754",
+                      "on-secondary": "#ffffff",
+                      "on-background": "#1b1b1d",
+                      "on-tertiary-container": "#fffbff",
+                      "tertiary-container": "#c25300",
+                      "outline": "#717786",
+                      "inverse-surface": "#303032",
+                      "on-error-container": "#93000a",
+                      "primary-fixed": "#d6e3ff",
+                      "inverse-on-surface": "#f3f0f2",
+                      "on-primary-container": "#fefcff",
+                      "on-primary-fixed-variant": "#00468d",
+                      "primary": "#005ab3",
+                      "on-surface": "#1b1b1d",
+                      "secondary-container": "#6664e4",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#ffb691",
+                      "secondary-fixed-dim": "#c2c1ff",
+                      "surface": "#fcf8fb",
+                      "surface-variant": "#e4e2e4",
+                      "primary-container": "#0073e0",
+                      "surface-container": "#f0edef",
+                      "error-container": "#ffdad6",
+                      "surface-dim": "#dcd9dc",
+                      "secondary": "#4c4aca",
+                      "inverse-primary": "#aac7ff",
+                      "on-primary-fixed": "#001b3e",
+                      "secondary-fixed": "#e2dfff",
+                      "on-tertiary-fixed": "#341100",
+                      "surface-container-high": "#eae7ea",
+                      "tertiary-fixed": "#ffdbcb",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#793100",
+                      "on-secondary-fixed": "#0c006a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "md": "16px",
+                      "sm": "12px",
+                      "base": "4px",
+                      "gutter": "20px",
+                      "xs": "8px",
+                      "xl": "40px",
+                      "container-max": "1200px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Newsreader"
+                      ],
+                      "label-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Newsreader"
+                      ],
+                      "label-xs": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Newsreader"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "38px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-xs": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .source-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .modal-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased h-screen flex overflow-hidden">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-full py-lg px-md bg-surface border-r border-outline-variant w-64 z-30">
+<div class="mb-xl flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[32px]">psychology</span>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Briefly</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Distilled Intelligence</span>
+</div>
+</div>
+<ul class="flex-1 space-y-sm">
+<li>
+<a class="flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors scale-98 active:opacity-80 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">newspaper</span>
+                    Feed
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-sm py-sm rounded-lg text-primary font-bold border-r-4 border-primary bg-surface-container-low transition-colors scale-98 active:opacity-80 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rss_feed</span>
+                    Sources
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors scale-98 active:opacity-80 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">psychology</span>
+                    AI Studio
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors scale-98 active:opacity-80 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+                    Bookmarks
+                </a>
+</li>
+</ul>
+<div class="mt-auto">
+<button class="w-full bg-primary text-on-primary font-label-sm text-label-sm py-sm rounded-DEFAULT mb-md hover:opacity-90 transition-opacity">
+                Upgrade to Pro
+            </button>
+<ul class="space-y-sm">
+<li>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                        Settings
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+                        Help
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-64 h-full overflow-y-auto">
+<!-- TopAppBar (Desktop) -->
+<header class="hidden md:flex justify-between items-center w-full h-16 px-gutter sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-lg">
+<span class="font-display-lg text-display-lg font-semibold text-primary hidden">Briefly</span>
+<nav class="flex gap-md font-label-sm text-label-sm">
+<a class="text-on-surface-variant hover:text-primary transition-opacity" href="#">Latest</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity" href="#">Trending</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Verified</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="pl-xl pr-sm py-xs bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none w-64" placeholder="Search sources..." type="text">
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-opacity">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-opacity">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- TopAppBar (Mobile) - Simulated standard top bar for mobile -->
+<header class="md:hidden flex justify-between items-center w-full h-16 px-gutter sticky top-0 z-40 bg-background/90 backdrop-blur-md border-b border-outline-variant">
+<span class="font-headline-md text-headline-md-mobile font-bold text-on-surface">Sources</span>
+<button class="text-on-surface-variant hover:text-primary transition-opacity" onclick="document.getElementById('addSourceModal').classList.remove('hidden')">
+<span class="material-symbols-outlined">add</span>
+</button>
+</header>
+<div class="p-gutter md:p-xl max-w-container-max mx-auto w-full pb-32 md:pb-xl">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-base">RSS Sources</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your subscriptions and discover new intelligence streams.</p>
+</div>
+<button class="hidden md:flex bg-primary text-on-primary font-label-sm text-label-sm px-md py-sm rounded-DEFAULT items-center gap-xs hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm" onclick="document.getElementById('addSourceModal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Add New Feed
+                </button>
+</div>
+<!-- Active Subscriptions -->
+<section class="mb-xl">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">Active Subscriptions</h2>
+<div class="source-grid">
+<!-- Source Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-sm hover:shadow-[0px_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist monochrome tech logo featuring a stylized geometric T against a white background, representing a premium technology news publication in a digital light mode interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHR7GeLJfiAaibCc9erXAFe8Uo33WzKXlpbBv1vOlvBQkf6cep4g6I9o3xEgW2j5P3xaeKR22uCUGR9c-ZV--WD2zigX-x23wIF9RIDURqkYrK13sG0VI19hZ4IxJ8AfMFVxbWWxxYIN6uu6NhdEqhsBIgOLvKVl4LozTk8ViMtFS6buzMMDvN45KQl6hQWt9MGpR26k0pMhOTbFpqjYBjnr_TMlfwk7_y7v2WJlEVC-wvDdawuFHIFw">
+</div>
+<div>
+<h3 class="font-body-md text-body-md font-medium text-on-surface leading-tight">TechCrunch</h3>
+<span class="font-label-xs text-label-xs text-outline">technology</span>
+</div>
+</div>
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="flex justify-between items-center mt-sm pt-sm border-t border-outline-variant">
+<div class="flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined text-[14px]">sync</span>
+<span class="font-label-xs text-label-xs">Synced 5m ago</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Active</span>
+</div>
+</div>
+</div>
+<!-- Source Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-sm hover:shadow-[0px_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A sophisticated, serif typographic logo featuring a large N in dark gray on a stark white background, typical of high-end traditional news media organizations in a modern web app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCygAoMhIGZk8ka2cBPlQ3LMU0fqQUIxQepOlTrS3IeBMP1A-AugZMyjRuCLTy4YAJ1I0usaBa6wYdux7KwCsy5aY2Ze79a3mEk0CYfGMsUYVAJ36OZYGnW8zbDCSTSgKH_Fp8qgyulW8teRIVdHsMGZqNSNRt2TGUDuH2YpGmDDwHUNfdeEGe0j3psyIZN1459r770-uH9KGuqwY0CeSogecEecwC7AucGDfHtXcP03_GnOeLoKx4-g">
+</div>
+<div>
+<h3 class="font-body-md text-body-md font-medium text-on-surface leading-tight">NYT World</h3>
+<span class="font-label-xs text-label-xs text-outline">politics</span>
+</div>
+</div>
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="flex justify-between items-center mt-sm pt-sm border-t border-outline-variant">
+<div class="flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined text-[14px]">sync</span>
+<span class="font-label-xs text-label-xs">Synced 12m ago</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Active</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface border-t border-outline-variant shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-full px-4 py-1 transition-transform duration-100 active:scale-95" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-xs text-label-xs mt-1">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform duration-100 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">list_alt</span>
+<span class="font-label-xs text-label-xs mt-1">Sources</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-full px-4 py-1 transition-transform duration-100 active:scale-95" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-xs text-label-xs mt-1">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-full px-4 py-1 transition-transform duration-100 active:scale-95" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-xs text-label-xs mt-1">Profile</span>
+</a>
+</nav>
+<!-- Add Source Modal -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center bg-on-background/20 backdrop-blur-sm p-4" id="addSourceModal">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-[0px_4px_24px_rgba(0,0,0,0.1)] w-full max-w-md p-lg">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Add New Feed</h3>
+<button class="text-outline hover:text-on-surface transition-colors" onclick="document.getElementById('addSourceModal').classList.add('hidden')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form>
+<div class="mb-md">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">RSS URL</label>
+<input class="w-full bg-surface border border-outline-variant rounded-DEFAULT p-sm text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="https://example.com/feed.xml" type="url">
+</div>
+<div class="mb-lg">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Category</label>
+<select class="w-full bg-surface border border-outline-variant rounded-DEFAULT p-sm text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option>Technology</option>
+<option>Politics</option>
+<option>Science</option>
+<option>Design</option>
+</select>
+</div>
+<div class="flex justify-end gap-sm">
+<button class="px-md py-sm rounded-DEFAULT border border-primary text-primary font-label-sm text-label-sm hover:bg-primary-fixed transition-colors" onclick="document.getElementById('addSourceModal').classList.add('hidden')" type="button">Cancel</button>
+<button class="px-md py-sm rounded-DEFAULT bg-primary text-on-primary font-label-sm text-label-sm hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm" type="submit">Add Feed</button>
+</div>
+</form>
+</div>
+</div>
+</body></html>

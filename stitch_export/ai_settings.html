@@ -1,0 +1,412 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AI Settings &amp; Preferences - Briefly</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#fcf8fb",
+                    "surface-container-low": "#f6f3f5",
+                    "outline-variant": "#c0c6d6",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#9a4100",
+                    "surface-container-highest": "#e4e2e4",
+                    "on-secondary-container": "#fffbff",
+                    "surface-tint": "#005db8",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#aac7ff",
+                    "background": "#fcf8fb",
+                    "on-secondary-fixed-variant": "#3631b4",
+                    "on-surface-variant": "#414754",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#1b1b1d",
+                    "on-tertiary-container": "#fffbff",
+                    "tertiary-container": "#c25300",
+                    "outline": "#717786",
+                    "inverse-surface": "#303032",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#d6e3ff",
+                    "inverse-on-surface": "#f3f0f2",
+                    "on-primary-container": "#fefcff",
+                    "on-primary-fixed-variant": "#00468d",
+                    "primary": "#005ab3",
+                    "on-surface": "#1b1b1d",
+                    "secondary-container": "#6664e4",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#ffb691",
+                    "secondary-fixed-dim": "#c2c1ff",
+                    "surface": "#fcf8fb",
+                    "surface-variant": "#e4e2e4",
+                    "primary-container": "#0073e0",
+                    "surface-container": "#f0edef",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#dcd9dc",
+                    "secondary": "#4c4aca",
+                    "inverse-primary": "#aac7ff",
+                    "on-primary-fixed": "#001b3e",
+                    "secondary-fixed": "#e2dfff",
+                    "on-tertiary-fixed": "#341100",
+                    "surface-container-high": "#eae7ea",
+                    "tertiary-fixed": "#ffdbcb",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#793100",
+                    "on-secondary-fixed": "#0c006a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "md": "16px",
+                    "sm": "12px",
+                    "base": "4px",
+                    "gutter": "20px",
+                    "xs": "8px",
+                    "xl": "40px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Newsreader"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Newsreader"],
+                    "label-xs": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Newsreader"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-xs": ["10px", {"lineHeight": "12px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        /* Custom styling for sliders to match brand identity */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: theme('colors.primary');
+            cursor: pointer;
+            margin-top: -6px; 
+            box-shadow: 0 0 0 4px theme('colors.surface-bright');
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: theme('colors.outline-variant');
+            border-radius: 2px;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        
+        /* Custom toggle switch styling */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: theme('colors.primary');
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: theme('colors.primary');
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 1;
+            border-color: theme('colors.outline-variant');
+            transition: all 0.2s ease-in-out;
+        }
+        .toggle-label {
+            background-color: theme('colors.surface-variant');
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-surface-bright text-on-surface font-body-md antialiased flex min-h-screen">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-full py-lg px-md w-64 border-r border-outline-variant bg-surface z-50">
+<div class="flex items-center gap-sm mb-xl px-sm">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">Briefly</h1>
+<p class="font-label-xs text-label-xs text-on-surface-variant">Distilled Intelligence</p>
+</div>
+</div>
+<ul class="flex-1 space-y-sm">
+<li>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors scale-98 active:opacity-80 transition-all font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="newspaper">newspaper</span>
+                    Feed
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors scale-98 active:opacity-80 transition-all font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="rss_feed">rss_feed</span>
+                    Sources
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors scale-98 active:opacity-80 transition-all font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+                    AI Studio
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors scale-98 active:opacity-80 transition-all font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+                    Bookmarks
+                </a>
+</li>
+</ul>
+<div class="mt-auto space-y-sm pt-lg border-t border-outline-variant">
+<button class="w-full flex justify-center items-center py-2 px-4 rounded-lg bg-primary-container text-on-primary-container font-label-sm text-label-sm hover:opacity-90 transition-opacity mb-md">
+                Upgrade to Pro
+            </button>
+<ul class="space-y-sm">
+<!-- Settings Active State -->
+<li>
+<a class="flex items-center gap-md px-sm py-2 text-primary font-bold border-r-4 border-primary scale-98 active:opacity-80 transition-all font-body-md text-body-md bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+                        Settings
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors scale-98 active:opacity-80 transition-all font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+                        Help
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 pb-20 md:pb-0 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full h-16 px-gutter sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-lg">
+<span class="md:hidden font-display-lg text-display-lg font-semibold text-primary">Briefly</span>
+<nav class="hidden md:flex gap-md">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-opacity Active: opacity-70 duration-150" href="#">Latest</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-opacity Active: opacity-70 duration-150" href="#">Trending</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-opacity Active: opacity-70 duration-150" href="#">Verified</a>
+</nav>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="account_circle">account_circle</span></button>
+</div>
+</header>
+<!-- Canvas -->
+<div class="p-gutter max-w-container-max mx-auto w-full flex-1 pt-xl">
+<div class="mb-xl">
+<h2 class="font-display-lg-mobile md:font-display-lg text-on-surface">AI Engine Preferences</h2>
+<p class="font-body-md text-on-surface-variant mt-2">Customize how Briefly distills and presents your information.</p>
+</div>
+<!-- Bento Grid Layout for Settings -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Engine Selection (Spans full width or significant portion) -->
+<section class="lg:col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<div class="mb-md">
+<h3 class="font-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">memory</span>
+                            Primary LLM Engine
+                        </h3>
+<p class="font-body-md text-on-surface-variant">Select the underlying model used for generation and synthesis.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mt-lg" id="engine-selector">
+<!-- Option 1: ChatGPT-4 -->
+<label class="cursor-pointer group relative flex flex-col p-md rounded-lg border-2 border-outline-variant hover:border-primary-fixed-dim transition-colors bg-surface-bright">
+<input checked="" class="peer sr-only" name="llm_engine" type="radio" value="gpt4">
+<div class="peer-checked:border-primary peer-checked:bg-primary-container/10 absolute inset-0 rounded-lg border-2 border-transparent transition-all pointer-events-none"></div>
+<div class="flex justify-between items-start mb-md relative z-10">
+<span class="material-symbols-outlined text-primary-fixed-dim group-hover:text-primary peer-checked:text-primary">bolt</span>
+<div class="w-4 h-4 rounded-full border border-outline-variant peer-checked:border-primary peer-checked:border-4 transition-all"></div>
+</div>
+<span class="font-headline-md text-on-surface text-lg relative z-10">ChatGPT-4</span>
+<span class="font-body-md text-on-surface-variant text-sm relative z-10 mt-1">Balanced speed and advanced reasoning. Default choice.</span>
+</label>
+<!-- Option 2: Gemini Pro -->
+<label class="cursor-pointer group relative flex flex-col p-md rounded-lg border-2 border-outline-variant hover:border-primary-fixed-dim transition-colors bg-surface-bright">
+<input class="peer sr-only" name="llm_engine" type="radio" value="gemini">
+<div class="peer-checked:border-primary peer-checked:bg-primary-container/10 absolute inset-0 rounded-lg border-2 border-transparent transition-all pointer-events-none"></div>
+<div class="flex justify-between items-start mb-md relative z-10">
+<span class="material-symbols-outlined text-primary-fixed-dim group-hover:text-primary peer-checked:text-primary">hub</span>
+<div class="w-4 h-4 rounded-full border border-outline-variant peer-checked:border-primary peer-checked:border-4 transition-all"></div>
+</div>
+<span class="font-headline-md text-on-surface text-lg relative z-10">Gemini Pro</span>
+<span class="font-body-md text-on-surface-variant text-sm relative z-10 mt-1">Fast execution, optimal for real-time news feeds.</span>
+</label>
+<!-- Option 3: Llama 3 Local -->
+<label class="cursor-pointer group relative flex flex-col p-md rounded-lg border-2 border-outline-variant hover:border-primary-fixed-dim transition-colors bg-surface-bright">
+<input class="peer sr-only" name="llm_engine" type="radio" value="llama">
+<div class="peer-checked:border-primary peer-checked:bg-primary-container/10 absolute inset-0 rounded-lg border-2 border-transparent transition-all pointer-events-none"></div>
+<div class="flex justify-between items-start mb-md relative z-10">
+<span class="material-symbols-outlined text-primary-fixed-dim group-hover:text-primary peer-checked:text-primary">lan</span>
+<div class="w-4 h-4 rounded-full border border-outline-variant peer-checked:border-primary peer-checked:border-4 transition-all"></div>
+</div>
+<span class="font-headline-md text-on-surface text-lg relative z-10">Llama 3 Local</span>
+<span class="font-body-md text-on-surface-variant text-sm relative z-10 mt-1">Maximum privacy. Runs entirely on your device.</span>
+</label>
+</div>
+</section>
+<!-- Output Control (Sliders) -->
+<section class="lg:col-span-5 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm flex flex-col">
+<div class="mb-lg">
+<h3 class="font-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">tune</span>
+                            Output Parameters
+                        </h3>
+</div>
+<div class="space-y-xl flex-1 flex flex-col justify-center">
+<!-- Depth Slider -->
+<div>
+<div class="flex justify-between items-end mb-sm">
+<label class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider" for="depth-slider">Summary Depth</label>
+<span class="font-body-md text-on-surface-variant text-sm" id="depth-value">Balanced</span>
+</div>
+<input class="w-full" id="depth-slider" max="3" min="1" step="1" type="range" value="2">
+<div class="flex justify-between mt-2 px-1">
+<span class="font-label-xs text-on-surface-variant">Skim</span>
+<span class="font-label-xs text-on-surface-variant">Deep Dive</span>
+</div>
+</div>
+<!-- Tone Slider -->
+<div>
+<div class="flex justify-between items-end mb-sm">
+<label class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider" for="tone-slider">Tone Detail</label>
+<span class="font-body-md text-on-surface-variant text-sm" id="tone-value">Objective</span>
+</div>
+<input class="w-full" id="tone-slider" max="3" min="1" step="1" type="range" value="2">
+<div class="flex justify-between mt-2 px-1">
+<span class="font-label-xs text-on-surface-variant">Analytical</span>
+<span class="font-label-xs text-on-surface-variant">Conversational</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column Group (Custom Prompt & Toggles) -->
+<div class="lg:col-span-7 flex flex-col gap-lg">
+<!-- Custom Prompting -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm flex-1 flex flex-col">
+<div class="mb-sm">
+<h3 class="font-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+                                System Instructions
+                            </h3>
+<p class="font-body-md text-on-surface-variant text-sm mt-1">Provide specific rules for how the AI should format or filter summaries.</p>
+</div>
+<div class="mt-md flex-1 flex flex-col">
+<textarea class="w-full flex-1 bg-surface-bright border border-outline-variant rounded-lg p-md font-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none min-h-[120px]" placeholder="e.g., 'Always provide a bulleted list of 3 key takeaways before the main summary text.' or 'Explain complex terms as if I am a beginner.'"></textarea>
+</div>
+</section>
+<!-- Automation Toggles -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<div class="mb-md">
+<h3 class="font-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">smart_toy</span>
+                                AI Automation Features
+                            </h3>
+</div>
+<div class="space-y-4">
+<!-- Toggle 1 -->
+<div class="flex items-center justify-between p-sm rounded-lg hover:bg-surface-container-low transition-colors">
+<div>
+<h4 class="font-body-md font-medium text-on-surface">Auto-Tagging Categories</h4>
+<p class="font-label-xs text-on-surface-variant mt-1">Automatically assign topics and entities to saved articles.</p>
+</div>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle_tagging" name="toggle_tagging" type="checkbox">
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer" for="toggle_tagging"></label>
+</div>
+</div>
+<hr class="border-outline-variant opacity-50">
+<!-- Toggle 2 -->
+<div class="flex items-center justify-between p-sm rounded-lg hover:bg-surface-container-low transition-colors">
+<div>
+<h4 class="font-body-md font-medium text-on-surface">Sentiment Analysis Badges</h4>
+<p class="font-label-xs text-on-surface-variant mt-1">Show emotional tone indicators (Positive/Neutral/Negative) on feeds.</p>
+</div>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle_sentiment" name="toggle_sentiment" type="checkbox">
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer" for="toggle_sentiment"></label>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Save Action Area -->
+<div class="mt-xl pt-lg border-t border-outline-variant flex justify-end gap-md pb-lg">
+<button class="px-lg py-2 rounded-lg border border-outline-variant text-on-surface font-label-sm text-label-sm hover:bg-surface-container-low transition-colors">Discard Changes</button>
+<button class="px-lg py-2 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm hover:opacity-90 transition-opacity shadow-sm hover:shadow-md">Save Preferences</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface border-t border-outline-variant shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-lg px-2 py-1 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-xs text-label-xs mt-1">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-lg px-2 py-1 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-label-xs text-label-xs mt-1">Sources</span>
+</a>
+<!-- Active State AI -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 Active: scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label-xs text-label-xs mt-1 font-bold">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-lg px-2 py-1 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-xs text-label-xs mt-1">Profile</span>
+</a>
+</nav>
+<!-- Simple script to update slider label text for UX -->
+<script>
+        const depthSlider = document.getElementById('depth-slider');
+        const depthValue = document.getElementById('depth-value');
+        const depthLabels = ['Skim', 'Balanced', 'Deep Dive'];
+        
+        depthSlider.addEventListener('input', (e) => {
+            depthValue.textContent = depthLabels[e.target.value - 1];
+        });
+
+        const toneSlider = document.getElementById('tone-slider');
+        const toneValue = document.getElementById('tone-value');
+        const toneLabels = ['Analytical', 'Objective', 'Conversational'];
+        
+        toneSlider.addEventListener('input', (e) => {
+            toneValue.textContent = toneLabels[e.target.value - 1];
+        });
+    </script>
+</body></html>

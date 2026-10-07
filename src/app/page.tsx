@@ -210,6 +210,8 @@ export default function Dashboard() {
       if (data.success) {
         showBanner(`Feed synced! Found ${data.totalNewArticles} new items.`, 'success');
         await Promise.all([loadArticles(), loadStats(), loadFeeds()]);
+      } else {
+        showBanner(`Feed sync failed: ${data.error || 'Unable to sync this feed.'}`, 'error');
       }
     } catch (err: any) {
       showBanner(`Feed sync failed: ${err.message}`, 'error');
@@ -271,21 +273,35 @@ export default function Dashboard() {
 
   // Toggle Bookmark
   const handleToggleBookmark = async (articleId: string) => {
-    try {
+    const wasBookmarked =
+      articles.find((article) => article.id === articleId)?.isBookmarked ??
+      selectedReaderArticle?.isBookmarked ??
+      false;
+    const updateBookmarkState = (isBookmarked: boolean) => {
       setArticles((prev) =>
-        prev.map((a) => (a.id === articleId ? { ...a, isBookmarked: !a.isBookmarked } : a))
+        prev.map((article) => (article.id === articleId ? { ...article, isBookmarked } : article))
       );
-      if (selectedReaderArticle && selectedReaderArticle.id === articleId) {
-        setSelectedReaderArticle((prev) => (prev ? { ...prev, isBookmarked: !prev.isBookmarked } : null));
-      }
+      setSelectedReaderArticle((prev) =>
+        prev?.id === articleId ? { ...prev, isBookmarked } : prev
+      );
+    };
 
+    updateBookmarkState(!wasBookmarked);
+    try {
       const res = await fetch(`/api/articles/${articleId}/bookmark`, { method: 'POST' });
       const data = await res.json();
-      if (data.success) {
-        loadStats();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Unable to update this bookmark.');
       }
-    } catch (err) {
-      console.error('Bookmark error:', err);
+
+      updateBookmarkState(data.isBookmarked);
+      await Promise.all([
+        loadStats(),
+        filter.onlyBookmarked ? loadArticles() : Promise.resolve(),
+      ]);
+    } catch (err: any) {
+      updateBookmarkState(wasBookmarked);
+      showBanner(`Bookmark update failed: ${err.message}`, 'error');
     }
   };
 
@@ -312,13 +328,17 @@ export default function Dashboard() {
 
   // Delete Feed
   const handleDeleteFeed = async (feedId: string) => {
+    if (!window.confirm('Delete this source and all of its stories? This cannot be undone.')) return;
+
     try {
       const res = await fetch(`/api/feeds/${feedId}`, { method: 'DELETE' });
       const data = await res.json();
-      if (data.success) {
-        showBanner('Feed deleted successfully', 'info');
-        await Promise.all([loadFeeds(), loadArticles(), loadStats()]);
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Unable to delete this source.');
       }
+
+      showBanner('Feed deleted successfully', 'info');
+      await Promise.all([loadFeeds(), loadArticles(), loadStats()]);
     } catch (err: any) {
       showBanner(`Delete failed: ${err.message}`, 'error');
     }
